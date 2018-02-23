@@ -5,3 +5,11 @@ h1{
   font-family: Arial,sans-serif;
   font-weight:bold;
 }
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+.container > img{
+  margin: 10px;
+}
