@@ -239,7 +239,7 @@ for i in range(iterations):
     imsave(fname, img)
     end_time = time.time()
     print('Image saved as', fname)
-print('Iteration %d completed in %ds' % (i, end_time - start_time))
+    print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
 #作者：杨航锋
 #链接：https://www.zhihu.com/question/21395276/answer/115805610

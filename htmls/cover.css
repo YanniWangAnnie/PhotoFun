@@ -37,7 +37,7 @@ body {
   background-color: #333;
 }
 
-#page1 {
+body {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;

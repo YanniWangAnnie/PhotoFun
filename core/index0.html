@@ -8,19 +8,49 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>PhotoFun</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link href="album.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="text-center">
 
-    <main role="main">
+    <div id="page1">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Photo Fun</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link" href="#">Upload</a>
+            <a class="nav-link" href="#">Contact</a>
+          </nav>
+        </div>
+      </header>
 
+      <main role="main" class="container-fluid">
+        <h1 class="cover-heading">With Photo Fun</h1>
+        <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+        </div>
+      </footer>
+      </div>
+    </div>
+
+      <div id="page2">
       <div class="album py-5 bg-light">
         <div class="container">
 
@@ -120,18 +150,8 @@
           </div>
         </div>
       </div>
+    </div>
 
-    </main>
-
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-      </div>
-    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -140,6 +160,5 @@
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <script src="../../../../assets/js/vendor/holder.min.js"></script>
   </body>
 </html>
