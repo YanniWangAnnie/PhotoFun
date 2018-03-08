@@ -15,7 +15,7 @@ body {
 #header{
   margin-top: -20px;
   height: 500px;
-  background-image: url("../core/huashantuce.jpg");
+  background-image: url("../img/huashantuce.jpg");
   background-position: center;
   background-repeat: no-repeat;
   -webkit-background-size: cover;
@@ -36,9 +36,10 @@ body {
   font-size: 90%;
 }
 
-#section1, #section2{
-  margin-top: -30px;
+#section1, #section2, #section3{
+  margin-top: -35px;
 }
 #section2{
-  background-color: white;
+  background-image: url("../img/baihe.jpg");
+  color: #845c2e;
 }

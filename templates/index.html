@@ -10,38 +10,15 @@
     <title>PhotoFun</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../../../bootstrap-4/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
 
 
     <!-- Custom styles for this template
     <link href="album.css" rel="stylesheet"> -->
-    <link href="navbar.css" rel="stylesheet">
+    <link href="static/css/mainstyle.css" rel="stylesheet">
   </head>
 
   <body>
-    <!--
-    <div class="container">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">PhotoFun</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav pull-right">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Upload</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div> -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">PhotoFun</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +31,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Upload Photo</a>
+            <a class="nav-link" href="#section1">Upload Photo</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -68,7 +45,9 @@
         <h1>With Photo Fun</h1>
         <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
         <p class="lead">
-          <button type="button" class="btn btn-light btn-lg">Upload Photo</button>
+          <a class="btn btn-light btn-lg" href="#section1" role="button">Upload Photo</a>
+          <!--
+          <button type="button" class="btn btn-light btn-lg">Upload Photo</button> -->
         </p>
       </div>
     </div>
@@ -81,7 +60,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/qingming.jpg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/qingming.jpg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -94,7 +73,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/hangongchunxiao.jpg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/hangongchunxiao.jpg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -107,7 +86,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/huachunshan.jpg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/huachunshan.jpg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -120,7 +99,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/nanpingyaji.jpg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/nanpingyaji.jpg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -133,7 +112,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/miyouren.jpeg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/miyouren.jpeg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -146,7 +125,7 @@
           </div>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <img class="card-img-top" src="../styles/wuguanzhong.jpg"  alt="Card image cap">
+              <img class="card-img-top" src="static/img/wuguanzhong.jpg"  alt="Card image cap">
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -205,8 +184,8 @@
     <script src="../../../../dist/js/bootstrap.min.js"></script> -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../bootstrap-4/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../bootstrap-4/assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../bootstrap-4/dist/js/bootstrap.min.js"></script>
+    <script>window.jQuery || document.write('<script src="static/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="static/vendor/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
   </body>
 </html>
