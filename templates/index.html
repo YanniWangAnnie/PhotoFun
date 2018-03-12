@@ -31,7 +31,7 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#steps">Upload photo</a>
+            <a class="nav-link" href="#stepone">Start</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -45,14 +45,14 @@
         <h1>With Photo Fun</h1>
         <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
         <p class="lead">
-          <a class="btn btn-light btn-lg" href="#steps" role="button">Click to start</a>
+          <a class="btn btn-light btn-lg" href="#stepone" role="button">Click to start</a>
           <!--
           <button type="button" class="btn btn-light btn-lg">Upload Photo</button> -->
         </p>
       </div>
     </div>
 
-    <div id="steps" class="jumbotron">
+    <div id="stepone" class="jumbotron">
       <div class="container">
         <h1>Step 1: Choose the art genre you like</h1>
         <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
@@ -65,7 +65,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                    <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s1')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s2')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -91,7 +91,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s3')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -104,7 +104,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s4')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s5')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Choose it</button>
+                      <a class="btn btn-sm btn-outline-secondary" href="{{url_for('nextstep', styleid='s6')}}" role="button">Choose it</a>
                   </div>
                 </div>
               </div>
@@ -141,38 +141,7 @@
     </div>
   </div>
 
-  <div id="section2" class="jumbotron">
-    <div class="container">
-      <h1>Step 2: Upload your photo</h1>
-      <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
-      <form>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">JPG,JPEG files are accepted</label>
-          <input type="file" class="form-control-file form-control-lg" id="exampleFormControlFile1">
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <div id="section3" class="jumbotron">
-    <div class="container">
-      <h1>Step 3: Input your Email address </h1>
-      <p class="lead"> We'll send you the picture to your email address.</p>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  </div>
-
-
-
-
-
+  
 
 
   <!-- Bootstrap core JavaScript
