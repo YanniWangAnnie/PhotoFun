@@ -4,7 +4,9 @@ class Worker:
         
 
     def work(self):
+        pass
 
     def is_active(self):
+        pass
 
         
