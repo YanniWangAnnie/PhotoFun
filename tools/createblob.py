@@ -2,7 +2,7 @@ from azure.storage.blob import BlockBlobService, ContentSettings
 
 block_blob_service = BlockBlobService(account_name='photofunstorage', account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
 
-block_blob_service.create_container('photos')
+block_blob_service.create_container('mergedarts')
 """
 block_blob_service.create_blob_from_path(
     'styles', 'style1','static/img/qingming.jpg', content_settings=ContentSettings(content_type='image/jpg')

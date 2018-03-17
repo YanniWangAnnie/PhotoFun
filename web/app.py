@@ -52,7 +52,9 @@ def nextstep():
         art.styleid = styleid
         art.blobid = blobname
         art.contact = request.form['emailaddr']
+        art.state = 'new'
         table_service.insert_entity('photoart',art)  
+
         return "Congratulations!"
     return render_template("nextstep.html", styleid=styleid)
 

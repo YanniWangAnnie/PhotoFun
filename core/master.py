@@ -1,6 +1,7 @@
 import os
 import time
 import smtplib
+import worker
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -11,7 +12,6 @@ from azure.cosmosdb.table.models import Entity
 from azure.cosmosdb.table.tablebatch import TableBatch
 
 # should be property of master
-
 
 class Master:
     def __init__(self, workers):
@@ -31,7 +31,7 @@ class Master:
             if task.state == 'processing':   # define Enum for these states
                 worker = self.workerid_worker[task.workerid]
                 if not worker.is_active():
-                    if os.path.isfile(task.directory + '/' + self._get_artname(task)):
+                    if not worker.is_success():
                         self.assign_job(task)
                     else:
                         task.state = 'processed'
@@ -71,8 +71,7 @@ class Master:
             msg.attach(MIMEText(body, 'plain'))
 
             filename = "Photofun.jpg"
-            attachment = open(task.directory + '/' +
-                              self._get_artname(task), "rb")
+            attachment = open(self._download_art(task), "rb")
 
             part = MIMEBase('application', 'octet-stream')
             part.set_payload((attachment).read())
@@ -102,8 +101,23 @@ class Master:
     def run(self):
         while True:
             self.handle_jobs()
-            time.sleep(60)
+            time.sleep(6)
         
-
+    """
     def _get_artname(self, task):
-        return 'mergedArt' + task.blobid
+        return 'mergedart' + task.blobid
+    """
+
+    def _download_art(self,task):
+        art_name = "mergedart" + task.blobid
+        download_file_path = art_name
+
+        self.block_blob_service.get_blob_to_path('mergedarts',art_name,download_file_path)
+        return download_file_path
+
+if __name__ == '__main__':
+    workers = []
+    for i in range(4):
+        workers.append(worker.Worker(str(i)))
+    master = Master(workers)
+    master.run()

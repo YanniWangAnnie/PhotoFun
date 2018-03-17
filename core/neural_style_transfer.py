@@ -233,12 +233,13 @@ for i in range(iterations):
     x, min_val, info = fmin_l_bfgs_b(evaluator.loss, x.flatten(),
                                      fprime=evaluator.grads, maxfun=20)
     print('Current loss value:', min_val)
-    # save current generated image
-    img = deprocess_image(x.copy())
-    fname = result_prefix + '_at_iteration_%d.png' % i
-    imsave(fname, img)
+    # save generated image
+    if i == iterations - 1:
+        img = deprocess_image(x.copy())
+        fname = result_prefix
+        imsave(fname, img)
+        print('Image saved as', fname)
     end_time = time.time()
-    print('Image saved as', fname)
     print('Iteration %d completed in %ds' % (i, end_time - start_time))
 
 #作者：杨航锋
