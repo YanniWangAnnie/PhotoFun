@@ -25,10 +25,12 @@ class Master:
                                      account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
 
     def handle_jobs(self):
+        print("handle job")
         tasks = self.table_service.query_entities(
-            'photoart', filter="state eq 'new' or state eq 'processing' or state eq 'processed")
+            'photoart', filter="state eq 'new' or state eq 'processing' or state eq 'processed'")
         for task in tasks:
             if task.state == 'processing':   # define Enum for these states
+                print("master: processing task " + task.RowKey)
                 worker = self.workerid_worker[task.workerid]
                 if not worker.is_active():
                     if not worker.is_success():
@@ -36,9 +38,11 @@ class Master:
                     else:
                         task.state = 'processed'
             elif task.state == 'new':
+                print("master new task " + task.RowKey)
                 if self.assign_job(task):
                     task.state = 'processing'
             elif task.state == 'processed':
+                print("master processed " + task.RowKey)
                 if self.email_art(task):
                     task.state = 'emailed'
 
@@ -46,19 +50,23 @@ class Master:
 
 
     def assign_job(self, task):
+        print("assign job")
         has_assigned = False
-        for workerid, worker in self.workerid_worker:
+        for workerid, worker in self.workerid_worker.items():
             if not worker.is_active():
                 task.workerid = workerid
                 task.directory = "tmp/" + task.blobid
-                worker.work(task)
+                worker.start_work(task)
                 has_assigned = True
                 break
         return has_assigned
 
 
     def email_art(self, task):
+        print("email art")
         try:
+            download_file = self._download_art(task)
+
             fromaddr = "photofunfunfun@gmail.com"
             toaddr = task.contact
 
@@ -71,7 +79,7 @@ class Master:
             msg.attach(MIMEText(body, 'plain'))
 
             filename = "Photofun.jpg"
-            attachment = open(self._download_art(task), "rb")
+            attachment = open(download_file, "rb")
 
             part = MIMEBase('application', 'octet-stream')
             part.set_payload((attachment).read())
@@ -86,6 +94,9 @@ class Master:
             text = msg.as_string()
             server.sendmail(fromaddr, toaddr, text)
             server.quit()
+            
+            os.remove(download_file)
+            print("email done")
             return True
         except Exception as ex:
             print(ex)
@@ -95,7 +106,7 @@ class Master:
     def update_states(self, tasks):
         batch = TableBatch()
         for task in tasks:
-            batch.insert_entity(task)
+            batch.insert_or_merge_entity(task)
         self.table_service.commit_batch('photoart', batch)
 
     def run(self):
@@ -103,10 +114,6 @@ class Master:
             self.handle_jobs()
             time.sleep(6)
         
-    """
-    def _get_artname(self, task):
-        return 'mergedart' + task.blobid
-    """
 
     def _download_art(self,task):
         art_name = "mergedart" + task.blobid

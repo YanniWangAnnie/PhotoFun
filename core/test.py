@@ -2,9 +2,9 @@ import time
 import sys
 import os
 
-for i in range(10):
+for i in range(60):
     print('transform...')
     time.sleep(1)
-    f = open(sys.argv[2], 'w')
-    f.write('haha')
-    f.close()
+f = open(sys.argv[3], 'w')
+f.write('haha')
+f.close()
