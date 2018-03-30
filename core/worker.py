@@ -3,7 +3,7 @@ import threading
 import shutil
 import workerthread
 from azure.storage.blob import BlockBlobService, ContentSettings
-
+from logger import log, LogLevel
 
 class Worker(threading.Thread):
     def __init__(self,x):
@@ -49,7 +49,7 @@ class Worker(threading.Thread):
 
 
     def _download(self,task):
-        print("_download start")
+        log("_download start", LogLevel.info)
         if not os.path.exists(self.work_directory):
             os.makedirs(self.work_directory)
 
@@ -60,19 +60,19 @@ class Worker(threading.Thread):
         self.block_blob_service.get_blob_to_path('photos',task.blobid,file_path)
         self.block_blob_service.get_blob_to_path('styles',task.styleid,style_path)
 
-        print("_download end")
+        log("_download end", LogLevel.info)
         return (file_path,style_path)
 
 
     def _transfer(self, file_path, style_path, target_path):
-        print("transfer start")
+        log("transfer start", LogLevel.info)
         command_line = 'python neural_style_transfer.py ' +file_path + ' '+ style_path + ' ' + target_path
         os.system(command_line)
-        print("transfer end")
+        log("transfer end", LogLevel.info)
 
 
     def _upload(self,task,merged_art):
-        print("_upload_start")
+        log("_upload_start", LogLevel.info)
         if os.path.exists(merged_art):
             
             blobname = "mergedart" + task.blobid
@@ -85,12 +85,12 @@ class Worker(threading.Thread):
             
 
     def _clean_up(self):
-        print("delete " + self.work_directory)
+        log("delete " + self.work_directory, LogLevel.info)
         shutil.rmtree(self.work_directory, ignore_errors=True)
 
 
     def _work(self,task):
-        print("_work start")
+        log("_work start", LogLevel.info)
         self.work_directory = "../" +task.directory
 
         (file_path,style_path) = self._download(task)
@@ -100,7 +100,7 @@ class Worker(threading.Thread):
         self._transfer(file_path,style_path, merged_art)
         if self._upload(task,merged_art):
             self._clean_up()
-        print("_work end")
+        log("_work end", LogLevel.info)
 
         
 

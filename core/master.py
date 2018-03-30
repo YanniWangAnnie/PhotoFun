@@ -2,6 +2,7 @@ import os
 import time
 import smtplib
 import worker
+from logger import log, LogLevel
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
@@ -25,12 +26,12 @@ class Master:
                                      account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
 
     def handle_jobs(self):
-        print("handle job")
+        log("handle job",LogLevel.info)
         tasks = self.table_service.query_entities(
             'photoart', filter="state eq 'new' or state eq 'processing' or state eq 'processed'")
         for task in tasks:
             if task.state == 'processing':   # define Enum for these states
-                print("master: processing task " + task.RowKey)
+                log("master: processing task " + task.RowKey, LogLevel.info)
                 worker = self.workerid_worker[task.workerid]
                 if not worker.is_active():
                     if not worker.is_success():
@@ -38,11 +39,11 @@ class Master:
                     else:
                         task.state = 'processed'
             elif task.state == 'new':
-                print("master new task " + task.RowKey)
+                log("master new task " + task.RowKey, LogLevel.info)
                 if self.assign_job(task):
                     task.state = 'processing'
             elif task.state == 'processed':
-                print("master processed " + task.RowKey)
+                log("master processed " + task.RowKey, LogLevel.info)
                 if self.email_art(task):
                     task.state = 'emailed'
 
@@ -50,7 +51,7 @@ class Master:
 
 
     def assign_job(self, task):
-        print("assign job")
+        log("assign job", LogLevel.info)
         has_assigned = False
         for workerid, worker in self.workerid_worker.items():
             if not worker.is_active():
@@ -63,7 +64,7 @@ class Master:
 
 
     def email_art(self, task):
-        print("email art")
+        log("email art", LogLevel.info)
         try:
             download_file = self._download_art(task)
 
@@ -96,10 +97,10 @@ class Master:
             server.quit()
             
             os.remove(download_file)
-            print("email done")
+            log("email done", LogLevel.info)
             return True
         except Exception as ex:
-            print(ex)
+            log(ex, LogLevel.error)
             return False
 
 
@@ -115,7 +116,7 @@ class Master:
                 self.handle_jobs()
                 time.sleep(60)
             except Exception as ex:
-                print(ex)
+                log(ex, LogLevel.error)
 
 
     def _download_art(self,task):
