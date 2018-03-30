@@ -25,3 +25,7 @@ block_blob_service.create_blob_from_path(
     'styles', 'style6','static/img/wuguanzhong.jpg', content_settings=ContentSettings(content_type='image/jpg')
 )
 """
+
+
+
+

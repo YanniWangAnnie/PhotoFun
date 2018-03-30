@@ -111,9 +111,12 @@ class Master:
 
     def run(self):
         while True:
-            self.handle_jobs()
-            time.sleep(6)
-        
+            try:
+                self.handle_jobs()
+                time.sleep(60)
+            except Exception as ex:
+                print(ex)
+
 
     def _download_art(self,task):
         art_name = "mergedart" + task.blobid

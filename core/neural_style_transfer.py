@@ -16,7 +16,7 @@ parser.add_argument('style_reference_image_path', metavar='ref', type=str,
                     help='Path to the style reference image.')
 parser.add_argument('result_prefix', metavar='res_prefix', type=str,
                     help='Prefix for the saved results.')
-parser.add_argument('--iter', type=int, default=1, required=False,
+parser.add_argument('--iter', type=int, default=19, required=False,
                     help='Number of iterations to run.')
 parser.add_argument('--content_weight', type=float, default=0.025, required=False,
                     help='Content weight.')
