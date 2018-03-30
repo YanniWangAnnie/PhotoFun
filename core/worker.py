@@ -53,8 +53,10 @@ class Worker(threading.Thread):
         if not os.path.exists(self.work_directory):
             os.makedirs(self.work_directory)
 
-        file_path = self.work_directory + "/" + task.blobid
-        style_path = self.work_directory + "/" + task.styleid
+        filename = "photo.jpg"
+        stylename = "style.jpg"
+        file_path = self.work_directory + "/" + filename
+        style_path = self.work_directory + "/" + stylename
         self.block_blob_service.get_blob_to_path('photos',task.blobid,file_path)
         self.block_blob_service.get_blob_to_path('styles',task.styleid,style_path)
 
@@ -93,7 +95,7 @@ class Worker(threading.Thread):
 
         (file_path,style_path) = self._download(task)
 
-        merged_art = self.work_directory + "/mergedart" +task.blobid
+        merged_art = self.work_directory + "/mergedart.jpg"
 
         self._transfer(file_path,style_path, merged_art)
         if self._upload(task,merged_art):
