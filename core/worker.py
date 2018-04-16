@@ -66,7 +66,7 @@ class Worker(threading.Thread):
 
     def _transfer(self, file_path, style_path, target_path):
         log("transfer start", LogLevel.info)
-        command_line = 'python neural_style_transfer.py ' +file_path + ' '+ style_path + ' ' + target_path
+        command_line = 'python3.6 neural_style_transfer.py ' +file_path + ' '+ style_path + ' ' + target_path
         os.system(command_line)
         log("transfer end", LogLevel.info)
 
