@@ -23,13 +23,7 @@ class Worker:
 
     def is_success(self):
         if self.worker_thread:
-            if self.worker_thread.is_alive():
-                return None
-            else:
-                if self.status == 'success':
-                    return True
-                else:
-                    return False
+            return self.worker_thread.is_success()        
         return None
 
     def get_id(self):

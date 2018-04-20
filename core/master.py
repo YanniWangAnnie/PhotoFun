@@ -128,7 +128,7 @@ class Master:
 
 if __name__ == '__main__':
     workers = []
-    for i in range(4):
+    for i in range(2):
         workers.append(worker.Worker(str(i)))
     master = Master(workers)
     master.run()
