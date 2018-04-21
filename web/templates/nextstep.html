@@ -50,7 +50,7 @@
       <form method="POST" enctype="multipart/form-data" action="{{url_for('nextstep', styleid=styleid)}}" id="form">
         <div class="form-group">
           <label for="exampleFormControlFile1">JPG,JPEG files are accepted</label>
-          <input type="file" name="file" class="form-control-file form-control-lg" id="exampleFormControlFile1">
+          <input type="file" onchange="ValidateSingleInput(this);" name="file" class="form-control-file form-control-lg" id="exampleFormControlFile1">
         </div>
         <div>
           <h1>Step 3: Input your Email address </h1>
