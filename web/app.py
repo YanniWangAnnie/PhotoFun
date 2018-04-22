@@ -6,8 +6,8 @@ from azure.storage.blob import BlockBlobService, ContentSettings
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 
-block_blob_service = BlockBlobService(account_name='photofunstorage', account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
-table_service = TableService(account_name='photofunstorage', account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
+block_blob_service = BlockBlobService(account_name='photofunstorage', account_key=os.environ['ACCOUNT_KEY'])
+table_service = TableService(account_name='photofunstorage', account_key=os.environ['ACCOUNT_KEY'])
 
 
 UPLOAD_FOLDER = 'temp'

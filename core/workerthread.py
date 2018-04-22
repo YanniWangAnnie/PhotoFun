@@ -8,8 +8,7 @@ class WorkerThread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
 
-        self.block_blob_service = BlockBlobService(
-            account_name='photofunstorage', account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
+        self.block_blob_service = BlockBlobService(account_name='photofunstorage', account_key=os.environ['ACCOUNT_KEY'])
 
     def run(self):
         try:

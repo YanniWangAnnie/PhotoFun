@@ -20,10 +20,8 @@ class Master:
         for worker in workers:
             self.workerid_worker[worker.get_id()] = worker
 
-        self.block_blob_service = BlockBlobService(
-            account_name='photofunstorage', account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
-        self.table_service = TableService(account_name='photofunstorage',
-                                     account_key='Br6qGU0woc+qOQtsneQ6XkgQx6gsmcvmbg9Eyh6+gpISHwmu48o+rmBzIQvOkYfho5FM3xsDP1TrKWVr08XQMg==')
+        self.block_blob_service = BlockBlobService(account_name='photofunstorage', account_key=os.environ['ACCOUNT_KEY'])
+        self.table_service = TableService(account_name='photofunstorage', account_key=os.environ['ACCOUNT_KEY'])
 
     def handle_jobs(self):
         log("handle job",LogLevel.info)
@@ -91,7 +89,7 @@ class Master:
 
             server = smtplib.SMTP('smtp.gmail.com', 587)
             server.starttls()
-            server.login(fromaddr, "photofunfun")
+            server.login(fromaddr, os.environ['EMAIL_PASSWORD'])
             text = msg.as_string()
             server.sendmail(fromaddr, toaddr, text)
             server.quit()
