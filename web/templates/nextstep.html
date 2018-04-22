@@ -36,9 +36,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/">Return to choose a style</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -46,7 +43,7 @@
   <div id="section2" class="jumbotron">
     <div class="container">
       <h1>Step 2: Upload your photo</h1>
-      <p class="lead">You can restyle you picture with Chinese historical art genre.</p>
+      <p class="lead">You can restyle your picture with Chinese historical art genre.</p>
       <form method="POST" enctype="multipart/form-data" action="{{url_for('nextstep', styleid=styleid)}}" id="form">
         <div class="form-group">
           <label for="exampleFormControlFile1">JPG,JPEG files are accepted</label>
@@ -61,7 +58,7 @@
           
           <input type="email" name="emailaddr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
         
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <small>We'll never share your email with anyone else.</small>
         </div>
         <input type="submit" class="btn btn-primary" value="Submit" id="submit">
 
