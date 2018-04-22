@@ -12,8 +12,6 @@ from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
 from azure.cosmosdb.table.tablebatch import TableBatch
 
-# should be property of master
-
 class Master:
     def __init__(self, workers):
         self.workerid_worker = {}
@@ -28,7 +26,7 @@ class Master:
         tasks = self.table_service.query_entities(
             'photoart', filter="state eq 'new' or state eq 'processing' or state eq 'processed'")
         for task in tasks:
-            if task.state == 'processing':   # define Enum for these states
+            if task.state == 'processing':
                 log("master: processing task " + task.RowKey, LogLevel.info)
                 worker = self.workerid_worker[task.workerid]
                 if not worker.is_active():
